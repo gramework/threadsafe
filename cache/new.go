@@ -2,8 +2,9 @@ package cache
 
 import "sync"
 
-func New() *Cache {
-	return &Cache{
+// New Instance
+func New() *Instance {
+	return &Instance{
 		storage: make(map[string]interface{}),
 		lock:    sync.RWMutex{},
 	}

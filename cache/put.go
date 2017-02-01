@@ -1,6 +1,7 @@
 package cache
 
-func (c *Cache) Put(key string, value interface{}) error {
+// Put the value in a key
+func (c *Instance) Put(key string, value interface{}) error {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 	c.storage[key] = value

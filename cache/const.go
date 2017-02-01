@@ -1,3 +1,8 @@
 package cache
 
-const NotFound = "Key not found"
+import "errors"
+
+var (
+	// ErrNotFound error occurred in .Get() when key was not found
+	ErrNotFound = errors.New("Key not found")
+)
