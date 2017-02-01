@@ -3,7 +3,7 @@ package cache
 import (
 	"sync"
 
-	"github.com/gramework/gramework/nocopy"
+	"github.com/gramework/utils/nocopy"
 )
 
 // Instance represents a cache instance
