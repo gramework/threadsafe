@@ -9,7 +9,6 @@ import (
 // Instance represents a cache instance
 type Instance struct {
 	storage map[string]interface{}
+	nocopy  nocopy.NoCopy
 	lock    sync.RWMutex
-
-	nocopy nocopy.NoCopy
 }
