@@ -1,30 +1,24 @@
 package store
 
 import (
-	"sync"
-
+	"github.com/gramework/threadsafe/hashmap"
 	"github.com/gramework/utils/nocopy"
 )
 
 // Store itself
 type Store struct {
-	store map[string]interface{}
-	*sync.RWMutex
+	store hashmap.Map
 
 	nocopy nocopy.NoCopy
 }
 
 // Put or replace a key
 func (s *Store) Put(key string, v interface{}) {
-	s.Lock()
-	s.store[key] = v
-	s.Unlock()
+	s.store.Put(key, v)
 }
 
 // Get a key from the storage
 func (s *Store) Get(key string) (v interface{}, ok bool) {
-	s.RLock()
-	v, ok = s.store[key]
-	s.RUnlock()
+	v, ok = s.store.GetPtrOk(key)
 	return
 }
