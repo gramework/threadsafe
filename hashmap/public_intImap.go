@@ -19,11 +19,15 @@ func init() {
 	intIMapTyp = (*runtimer.MapType)(unsafe.Pointer(e.typ))
 }
 
-func NewIntIMap() *IntIMap {
+func NewIntIMap(size ...int32) *IntIMap {
+	sz := int32(0)
+	if len(size) > 0 {
+		sz = size[0]
+	}
 	typ := &*intIMapTyp
 	return &IntIMap{
 		typ: typ,
-		hm:  makemap(typ, 0, nil, nil),
+		hm:  makemap(typ, int64(sz), nil, nil),
 	}
 }
 
